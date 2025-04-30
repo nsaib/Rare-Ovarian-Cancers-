@@ -1,0 +1,469 @@
+library(readxl)
+library(dplyr)
+
+# File path to your Excel file
+file_path <- "~/Documents/dissertation project/Data using/Total_Proteome_wong_et_al_Tarney_et_al.xlsx"
+
+# Read the two sheets into separate data frames
+Wong_et_al_Total_Proteome <- read_excel(file_path, sheet = "Wong_et_al_Total_Proteome")
+Tarney_et_al_Total_Proteome <- read_excel(file_path, sheet = "Tarney_et_al_Total_Proteome")
+
+# Print the actual column names of Wong_et_al_Total_Proteome
+print("Column names in Wong_et_al_Total_Proteome:")
+print(names(Wong_et_al_Total_Proteome))
+
+# Print the first few rows of Wong_et_al_Total_Proteome
+print("\nHead of Wong_et_al_Total_Proteome:")
+print(head(Wong_et_al_Total_Proteome))
+
+# Print the structure of Wong_et_al_Total_Proteome
+print("\nStructure of Wong_et_al_Total_Proteome:")
+print(str(Wong_et_al_Total_Proteome))
+
+# Try the full_join again (after verifying the column name)
+full_joined_data <- full_join(Wong_et_al_Total_Proteome, 
+                              Tarney_et_al_Total_Proteome, 
+                              by = "GS")
+                        
+
+# View the joined data
+View(full_joined_data)
+# Assuming your table is in a data frame called 'my_data'
+# Assuming your table is in a data frame called 'my_data'
+write.csv(my_data, file = "my_data.csv", row.names = FALSE)
+# Assuming your table is in a data frame called 'my_data'
+write.csv(my_data, file = "full_joined_data", row.names = FALSE)
+# Install gplots if you don't have it
+# install.packages("gplots")
+
+library(gplots)
+library(readxl) # Assuming you still need to read your Excel file
+library(dplyr) # Assuming you still need dplyr
+# File path to your Excel file
+file_path <- "~/Documents/dissertation project/Data using/Total_Proteome_wong_et_al_Tarney_et_al.xlsx"
+
+# Read the two sheets into separate data frames
+Wong_et_al_Total_Proteome <- read_excel(file_path, sheet = "Wong_et_al_Total_Proteome")
+Tarney_et_al_Total_Proteome <- read_excel(file_path, sheet = "Tarney_et_al_Total_Proteome")
+
+# Perform the full join using the correct column names
+full_joined_data <- full_join(Wong_et_al_Total_Proteome, 
+                              Tarney_et_al_Total_Proteome, 
+                              by ="GS")
+                              # Extract the GS column (gene symbols) and the numeric data
+                              gene_symbols <- full_joined_data$GS
+                              numeric_data <- full_joined_data[, -which(names(full_joined_data) == "GS")]
+                              
+                              # Convert numeric data to a matrix (required for heatmap.2)
+                              numeric_matrix <- as.matrix(numeric_data)
+                              
+                              # Set the row names of the matrix to the gene symbols
+                              rownames(numeric_matrix) <- gene_symbols
+                              
+                              # Remove rows with NA values
+                              numeric_matrix <- numeric_matrix[complete.cases(numeric_matrix), ]
+                              
+                              library(readxl)
+                              library(dplyr)
+                              
+                              # File path to your Excel file
+                              file_path <- "~/Documents/dissertation project/Data using/Total_Proteome_wong_et_al_Tarney_et_al.xlsx"
+                              
+                              # Read the two sheets into separate data frames
+                              Wong_et_al_Total_Proteome <- read_excel(file_path, sheet = "Wong_et_al_Total_Proteome")
+                              Tarney_et_al_Total_Proteome <- read_excel(file_path, sheet = "Tarney_et_al_Total_Proteome")
+                              
+                              # Perform the full join using the common column "GS"
+                              full_joined_data <- full_join(Wong_et_al_Total_Proteome, 
+                                                            Tarney_et_al_Total_Proteome, 
+                                                            by = "GS")  # Changed to "GS"
+                              
+                              # View the joined data
+                              View(full_joined_data)
+                              library(readxl)
+                              library(dplyr)
+                              
+                              # File path to your Excel file
+                              file_path <- "~/Documents/dissertation project/Data using/Total_Proteome_wong_et_al_Tarney_et_al.xlsx"
+                              
+                              # Read the two sheets into separate data frames
+                              Wong_et_al_Total_Proteome <- read_excel(file_path, sheet = "Wong_et_al_Total_Proteome")
+                              Tarney_et_al_Total_Proteome <- read_excel(file_path, sheet = "Tarney_et_al_Total_Proteome")
+                              
+                              # Perform the full join using the common column "GS"
+                              full_joined_data <- full_join(Wong_et_al_Total_Proteome, 
+                                                            Tarney_et_al_Total_Proteome, 
+                                                            by = "GS")  # Changed to "GS"
+                              
+                              # View the joined data
+                              View(full_joined_data
+  library(readxl)
+  library(dplyr)
+library(gplots) # For heatmap.2
+                                   
+                                   # File path to your Excel file
+                                   file_path <- "~/Documents/dissertation project/Data using/Total_Proteome_wong_et_al_Tarney_et_al.xlsx"
+                                   
+                                   # Read the two sheets into separate data frames
+                                   Wong_et_al_Total_Proteome <- read_excel(file_path, sheet = "Wong_et_al_Total_Proteome")
+                                   Tarney_et_al_Total_Proteome <- read_excel(file_path, sheet = "Tarney_et_al_Total_Proteome")
+                                   
+                                   # Perform the full join using the common column "GS"
+                                   full_joined_data <- full_join(Wong_et_al_Total_Proteome, 
+                                                                 Tarney_et_al_Total_Proteome, 
+                                                                 by = "GS")  # Assuming both have "GS" column
+                                   
+                                   # Prepare data for heatmap
+                                   gene_symbols <- full_joined_data$GS
+                                   numeric_data <- full_joined_data[, -which(names(full_joined_data) == "GS")]
+                                   
+                                   # Convert numeric data to a matrix
+                                   numeric_matrix <- as.matrix(numeric_data)
+                                   
+                                   # Set row names to gene symbols
+                                   rownames(numeric_matrix) <- gene_symbols
+                                   
+                                   # Remove rows with NA values
+                                   numeric_matrix <- numeric_matrix[complete.cases(numeric_matrix), ]
+                                   
+                                   # Create the heatmap
+                                   heatmap.2(numeric_matrix,
+                                             scale = "row", # Scale rows for better visualization
+                                             trace = "none",
+                                             density.info = "none",
+                                             col = colorRampPalette(c("blue", "white", "red"))(100),
+                                             margins = c(10, 10), # Adjust margins for labels
+                                             cexRow = 0.8,
+                                             cexCol = 1.0,
+                                             main = "Heatmap of Gene Expression Data")
+                                   library(readxl)
+                                   library(dplyr)
+                                   library(corrplot) # For correlation plot
+                                   library(gplots) # For heatmap.2 (if you still want the heatmap)
+                                   
+                                   # File path to your Excel file
+                                   file_path <- "~/Documents/dissertation project/Data using/Total_Proteome_wong_et_al_Tarney_et_al.xlsx"
+                                   
+                                   # Read the two sheets into separate data frames
+                                   Wong_et_al_Total_Proteome <- read_excel(file_path, sheet = "Wong_et_al_Total_Proteome")
+                                   Tarney_et_al_Total_Proteome <- read_excel(file_path, sheet = "Tarney_et_al_Total_Proteome")
+                                   
+                                   # Perform the full join using the common column "GS"
+                                   full_joined_data <- full_join(Wong_et_al_Total_Proteome, 
+                                                                 Tarney_et_al_Total_Proteome, 
+                                                                 by = "GS")  # Assuming both have "GS" column
+                                   
+                                   # Prepare data for correlation plot
+                                   numeric_data <- full_joined_data[, -which(names(full_joined_data) == "GS")] # Remove GS column
+                                   numeric_data <- select_if(numeric_data, is.numeric) # Select only numeric columns
+                                   
+                                   # Remove rows with NA values
+                                   numeric_data <- numeric_data[complete.cases(numeric_data), ]
+                                   
+                                   # Create the PDF file
+                                   pdf("Correlation_between_joined_data.pdf", width = 11, height = 8)
+                                   
+                                   # Create the correlation plot
+                                   corrplot(cor(numeric_data, method = "pearson", use = "complete.obs"),
+                                            method = "color",
+                                            type = "full",
+                                            diag = TRUE,
+                                            tl.col = "black",
+                                            addCoef.col = "black",
+                                            cl.lim = c(-1,1), # Adjusted to -1 to 1 for Pearson correlation
+                                            bg = "white",
+                                            title = "Correlation of Numeric Data (Joined Dataset)",
+                                            col = colorRampPalette(c("Blue", "cyan", "white", "yellow", "red"))(100),
+                                            na.label = " ",
+                                            tl.cex = 0.7,
+                                            tl.srt = 45,
+                                            order = "hclust",
+                                            number.cex = 0.5)
+                                   
+                                   # Close the PDF device
+                                   dev.off()
+                                   
+                                   print("Correlation plot saved to Correlation_between_joined_data.pdf")
+                                   
+                                   # Optional: Heatmap (if you still want it)
+                                   # pdf("heatmap_gene_expression.pdf", width = 10, height = 10)
+                                   # heatmap.2(as.matrix(numeric_data),
+                                   #           scale = "row",
+                                   #           trace = "none",
+                                   #           density.info = "none",
+                                   #           col = colorRampPalette(c("blue", "white", "red"))(100),
+                                   #           margins = c(10, 10),
+                                   #           cexRow = 0.8,
+                                   #           cexCol = 1.0,
+                                   #           main = "Heatmap of Gene Expression Data")
+                                   # dev.off()
+                                   # print("Heatmap saved to heatmap_gene_expression.pdf") 
+                                   library(dplyr)
+                                   library(ggplot2) # For plotting
+                                   
+                                   # Assuming your data is in a data frame called 'gene_counts'
+                                   # If it's not, you'll need to create a data frame from your data
+                                   # Example if it's not in a dataframe already.
+                                   gene_counts <- data.frame(
+                                     Gene = c("CDKN1B", "EPCAM", "MYH11", "SAMHD1", "WWTR1", "SERPINB3", "ALDH1L2", "CAD", "RPS15", "PAX8", "TOP1", "CARD11", "COL1A1", "MET", "IRS2", "CD276"),
+                                     Downregulated_Count = c(2, 3, 12, 11, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA),
+                                     Upregulated_Count = c(NA, NA, NA, NA, 6, 4, 6, 2, 4, 2, 2, 9, 3, 11, 7, 7)
+                                   )
+                                   
+                                   # Convert the data to long format for ggplot2
+                                   gene_counts_long <- gene_counts %>%
+                                     tidyr::pivot_longer(cols = c(Downregulated_Count, Upregulated_Count),
+                                                         names_to = "Category",
+                                                         values_to = "Count")
+                                   
+                                   # Clean up category names for plotting
+                                   gene_counts_long$Category <- gsub("_Count", "", gene_counts_long$Category)
+                                   # Create the bar chart
+                                   ggplot(gene_counts_long, aes(x = Gene, y = Count, fill = Category)) +
+                                     geom_bar(stat = "identity", position = "dodge") +
+                                     labs(title = "Comparison of Gene Counts",
+                                          x = "Gene",
+                                          y = "Count in Samples",
+                                          fill = "Category") +
+                                     theme_minimal() +
+                                     theme(axis.text.x = element_text(angle = 45, hjust = 1)) # Rotate x-axis labels                                   
+                                   library(readxl)
+                                   library(dplyr)
+                                   library(gplots)
+                                   library(ggplot2)
+                                   library(tidyr)
+                                   library(gridExtra) # For arranging plots
+                                   
+                                   # Load and prepare your data (same as before)
+                                   file_path <- "~/Documents/dissertation project/Data using/Total_Proteome_wong_et_al_Tarney_et_al.xlsx"
+                                   Wong_et_al_Total_Proteome <- read_excel(file_path, sheet = "Wong_et_al_Total_Proteome")
+                                   Tarney_et_al_Total_Proteome <- read_excel(file_path, sheet = "Tarney_et_al_Total_Proteome")
+                                   full_joined_data <- full_join(Wong_et_al_Total_Proteome, Tarney_et_al_Total_Proteome, by = "GS")
+                                   
+                                   gene_symbols <- full_joined_data$GS
+                                   numeric_data <- full_joined_data[, -which(names(full_joined_data) == "GS")]
+                                   numeric_matrix <- as.matrix(numeric_data)
+                                   rownames(numeric_matrix) <- gene_symbols
+                                   numeric_matrix <- numeric_matrix[complete.cases(numeric_matrix), ]
+                                   
+                                   gene_counts <- data.frame(
+                                     Gene = c("CDKN1B", "EPCAM", "MYH11", "SAMHD1", "WWTR1", "SERPINB3", "ALDH1L2", "CAD", "RPS15", "PAX8", "TOP1", "CARD11", "COL1A1", "MET", "IRS2", "CD276"),
+                                     Downregulated_Count = c(2, 3, 12, 11, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA),
+                                     Upregulated_Count = c(NA, NA, NA, NA, 6, 4, 6, 2, 4, 2, 2, 9, 3, 11, 7, 7)
+                                   )
+                                   
+                                   gene_counts_long <- gene_counts %>%
+                                     tidyr::pivot_longer(cols = c(Downregulated_Count, Upregulated_Count),
+                                                         names_to = "Category",
+                                                         values_to = "Count")
+                                   
+                                   gene_counts_long$Category <- gsub("_Count", "", gene_counts_long$Category)
+                                   
+                                   
+                                   genes_for_heatmap <- as.data.frame(gene_counts_long$Gene)
+                                   
+                                   names(genes_for_heatmap)[names(genes_for_heatmap) == 'gene_counts_long$Gene'] <- 'GS'                                   
+                                   
+                                   
+                                   gene_matrix_for_heatmap <- inner_join(genes_for_heatmap, full_joined_data, by= "GS")
+                                   
+                                   # Create heatmap, 
+                                   heatmap_plot <- heatmap.2(gene_matrix_for_heatmap[,-1],
+                                                             scale = "row",
+                                                             trace = "none",
+                                                             density.info = "none",
+                                                             col = colorRampPalette(c("blue", "white", "red"))(100),
+                                                             margins = c(10, 10),
+                                                             cexRow = 0.8,
+                                                             cexCol = 1.0,
+                                                             main = "Heatmap of Gene Expression Data")
+                                   
+                                   # Create bar chart
+                                   bar_chart <- ggplot(gene_counts_long, aes(x = Gene, y = Count, fill = Category)) +
+                                     geom_bar(stat = "identity", position = "dodge") +
+                                     labs(title = "Comparison of Gene Counts",
+                                          x = "Gene",
+                                          y = "Count in Samples",
+                                          fill = "Category") +
+                                     theme_minimal() +
+                                     theme(axis.text.x = element_text(angle = 45, hjust = 1))
+                                   > library(dplyr)
+                                   > library(ggplot2) # For plotting
+                                   > 
+                                     > # Assuming your data is in a data frame called 'gene_counts'
+                                     > # If it's not, you'll need to create a data frame from your data
+                                     > # Example if it's not in a dataframe already.
+                                     > gene_counts <- data.frame(
+                                       +     Gene = c("CDKN1B", "EPCAM", "MYH11", "SAMHD1", "WWTR1", "SERPINB3", "ALDH1L2", "CAD", "RPS15", "PAX8", "TOP1", "CARD11", "COL1A1", "MET", "IRS2", "CD276"),
+                                       +     Downregulated_Count = c(2, 3, 12, 11, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA),
+                                       +     Upregulated_Count = c(NA, NA, NA, NA, 6, 4, 6, 2, 4, 2, 2, 9, 3, 11, 7, 7)
+                                       + )
+                                   > 
+                                     > # Convert the data to long format for ggplot2
+                                     > gene_counts_long <- gene_counts %>%
+                                     +     tidyr::pivot_longer(cols = c(Downregulated_Count, Upregulated_Count),
+                                                               +                         names_to = "Category",
+                                                               +                         values_to = "Count")
+                                   > 
+                                     > # Clean up category names for plotting
+                                     > gene_counts_long$Category <- gsub("_Count", "", gene_counts_long$Category)
+                                   > # Create the bar chart
+                                     > ggplot(gene_counts_long, aes(x = Gene, y = Count, fill = Category)) +
+                                     +     geom_bar(stat = "identity", position = "dodge") +
+                                     +     labs(title = "Comparison of Gene Counts",
+                                                +          x = "Gene",
+                                                +          y = "Count in Samples",
+                                                +          fill = "Category") +
+                                     +     theme_minimal() +
+                                     +     theme(axis.text.x = element_text(angle = 45, hjust = 1)) # Rotate x-axis labels
+                                   
+                                   library(readxl)
+                                   library(dplyr)
+                                   library(gplots)
+                                   
+                                   # File path to your Excel file
+                                   file_path <- "~/Documents/dissertation project/Data using/Total_Proteome_wong_et_al_Tarney_et_al.xlsx"
+                                   
+                                   # Read the two sheets into separate data frames
+                                   Wong_et_al_Total_Proteome <- read_excel(file_path, sheet = "Wong_et_al_Total_Proteome")
+                                   Tarney_et_al_Total_Proteome <- read_excel(file_path, sheet = "Tarney_et_al_Total_Proteome")
+                                   
+                                   # Perform the full join using the common column "GS"
+                                   full_joined_data <- full_join(Wong_et_al_Total_Proteome, 
+                                                                 Tarney_et_al_Total_Proteome, 
+                                                                 by = "GS")
+                                   
+                                   # Prepare data for heatmap
+                                   gene_symbols <- full_joined_data$GS
+                                   numeric_data <- full_joined_data[, -which(names(full_joined_data) == "GS")]
+                                   
+                                   # Convert numeric data to a matrix
+                                   numeric_matrix <- as.matrix(numeric_data)
+                                   
+                                   # Set row names to gene symbols
+                                   rownames(numeric_matrix) <- gene_symbols
+                                   
+                                   # Remove rows with NA values
+                                   numeric_matrix <- numeric_matrix[complete.cases(numeric_matrix), ]
+                                   
+                                   #####Bar Graph Code#######
+                                   library(dplyr)
+                                   library(ggplot2) # For plotting
+                                   
+                                   # Assuming your data is in a data frame called 'gene_counts'
+                                   # If it's not, you'll need to create a data frame from your data
+                                   # Example if it's not in a dataframe already.
+                                   gene_counts <- data.frame(
+                                     Gene = c("CDKN1B", "EPCAM", "MYH11", "SAMHD1", "WWTR1", "SERPINB3", "ALDH1L2", "CAD", "RPS15", "PAX8", "TOP1", "CARD11", "COL1A1", "MET", "IRS2", "CD276"),
+                                     Downregulated_Count = c(2, 3, 12, 11, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA),
+                                     Upregulated_Count = c(NA, NA, NA, NA, 6, 4, 6, 2, 4, 2, 2, 9, 3, 11, 7, 7)
+                                   )
+                                   
+                                   # Convert the data to long format for ggplot2
+                                   gene_counts_long <- gene_counts %>%
+                                     tidyr::pivot_longer(cols = c(Downregulated_Count, Upregulated_Count),
+                                                         names_to = "Category",
+                                                         values_to = "Count")
+                                   
+                                   # Clean up category names for plotting
+                                   gene_counts_long$Category <- gsub("_Count", "", gene_counts_long$Category)
+                                   # Create the bar chart
+                                   ggplot(gene_counts_long, aes(x = Gene, y = Count, fill = Category)) +
+                                     geom_bar(stat = "identity", position = "dodge") +
+                                     labs(title = "Comparison of Gene Counts",
+                                          x = "Gene",
+                                          y = "Count in Samples",
+                                          fill = "Category") +
+                                     theme_minimal() +
+                                     theme(axis.text.x = element_text(angle = 45, hjust = 1)) # Rotate x-axis labels
+                                   library(dplyr)
+                                   library(ggplot2)
+                                   library(tidyr)
+                                   
+                                   gene_counts <- data.frame(
+                                     Gene = c("CDKN1B", "EPCAM", "MYH11", "SAMHD1", "WWTR1", "SERPINB3", "ALDH1L2", "CAD", "RPS15", "PAX8", "TOP1", "CARD11", "COL1A1", "MET", "IRS2", "CD276"),
+                                     Downregulated_Count = c(2, 3, 12, 11, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA),
+                                     Upregulated_Count = c(NA, NA, NA, NA, 6, 4, 6, 2, 4, 2, 2, 9, 3, 11, 7, 7)
+                                   )
+                                   
+                                   # Define TSG and oncogene gene lists
+                                   tsg_genes <- c("CDKN1B", "EPCAM", "MYH11", "SAMHD1")
+                                   oncogenes <- c("WWTR1", "SERPINB3", "ALDH1L2", "CAD", "RPS15", "PAX8", "TOP1", "CARD11", "COL1A1", "MET", "IRS2", "CD276")
+                                   
+                                   # Add a category column (TSG or Oncogene)
+                                   gene_counts <- gene_counts %>%
+                                     mutate(Gene_Category = ifelse(Gene %in% tsg_genes, "TSG", 
+                                                                   ifelse(Gene %in% oncogenes, "Oncogene", "Other"))) # Add "Other" if needed
+                                   
+                                   # Convert the data to long format for ggplot2
+                                   gene_counts_long <- gene_counts %>%
+                                     pivot_longer(cols = c(Downregulated_Count, Upregulated_Count),
+                                                  names_to = "Category",
+                                                  values_to = "Count")
+                                   
+                                   # Clean up category names for plotting
+                                   gene_counts_long$Category <- gsub("_Count", "", gene_counts_long$Category)
+                                   
+                                   # Filter out rows with NA counts
+                                   gene_counts_long <- gene_counts_long %>%
+                                     filter(!is.na(Count))
+                                   
+                                   # Create the bar chart
+                                   ggplot(gene_counts_long, aes(x = Gene, y = Count, fill = Category)) +
+                                     geom_bar(stat = "identity", position = "dodge") +
+                                     labs(title = "Comparison of Gene Counts",
+                                          x = "Gene",
+                                          y = "Count in Samples",
+                                          fill = "Category") +
+                                     theme_minimal() +
+                                     theme(axis.text.x = element_text(angle = 45, hjust = 1)) + # Rotate x-axis labels
+                                     facet_grid(~ Gene_Category, scales = "free_x", space = "free_x") # Facet by Gene_Category
+                                   library(dplyr)
+                                   library(ggplot2)
+                                   library(tidyr)
+                                   
+                                   gene_counts <- data.frame(
+                                     Gene = c("CDKN1B", "EPCAM", "MYH11", "SAMHD1", "WWTR1", "SERPINB3", "ALDH1L2", "CAD", "RPS15", "PAX8", "TOP1", "CARD11", "COL1A1", "MET", "IRS2", "CD276"),
+                                     Downregulated_Count = c(2, 3, 12, 11, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA),
+                                     Upregulated_Count = c(NA, NA, NA, NA, 6, 4, 6, 2, 4, 2, 2, 9, 3, 11, 7, 7)
+                                   )
+                                   
+                                   # Define TSG and oncogene gene lists
+                                   tsg_genes <- c("CDKN1B", "EPCAM", "MYH11", "SAMHD1")
+                                   oncogenes <- c("WWTR1", "SERPINB3", "ALDH1L2", "CAD", "RPS15", "PAX8", "TOP1", "CARD11", "COL1A1", "MET", "IRS2", "CD276")
+                                   
+                                   # Add a category column (TSG or Oncogene)
+                                   gene_counts <- gene_counts %>%
+                                     mutate(Gene_Category = ifelse(Gene %in% tsg_genes, "TSG", 
+                                                                   ifelse(Gene %in% oncogenes, "Oncogene", "Other")))
+                                   
+                                   # Convert the data to long format for ggplot2
+                                   gene_counts_long <- gene_counts %>%
+                                     pivot_longer(cols = c(Downregulated_Count, Upregulated_Count),
+                                                  names_to = "Category",
+                                                  values_to = "Count")
+                                   
+                                   # Clean up category names for plotting
+gene_counts_long$Category <- gsub("_Count", "", gene_counts_long$Category)
+                                   
+                                   # Filter out rows with NA counts
+                                   gene_counts_long <- gene_counts_long %>%
+                                     filter(!is.na(Count))
+                                   
+                                   # Create the bar chart with "Frequency in Samples" label
+                                   ggplot(gene_counts_long, aes(x = Gene, y = Count, fill = Category)) +
+                                     geom_bar(stat = "identity", position = "dodge") +
+                                     labs(title = "Comparison of Gene Counts",
+                                          x = "Gene",
+                                          y = "Frequency in Samples", # Changed label here
+                                          fill = "Category") +
+                                     theme_minimal() +
+                                     theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+                                     facet_grid(~ Gene_Category, scales = "free_x", space = "free_x")
+#Count instances
+
+                                   data <- full_joined_data                                 
+                                  
+                                  library (dplyr)
+                                  a1 <- filter_all(data$Wong_et_al_TP_LGS125)
+                                  
